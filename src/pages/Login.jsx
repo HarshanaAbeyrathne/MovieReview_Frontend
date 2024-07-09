@@ -6,6 +6,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import { login } from '../redux/features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 
+//react toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
