@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logout } from '../redux/features/auth/authSlice';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth);
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const handleClick = () => {
+    dispatch(logout());
+  }
 
   return (
     <nav className="bg-white shadow-lg">
@@ -29,9 +38,16 @@ function Navbar() {
           </div>
           {/* Secondary Navbar items */}
           <div className="hidden md:flex items-center space-x-3">
-            <a href="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:text-green-500 transition duration-300">Log In</a>
-            <a href="/signup" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
-          </div>
+            {!user && (
+              <div>
+                <a href="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:text-green-500 transition duration-300">Log In</a>
+                <a href="/signup" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
+              </div>
+            )}
+            {user && (
+            <button onClick={handleClick} className="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">Log Out</button>
+            )}
+            </div>
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button className="outline-none mobile-menu-button" onClick={handleMenuToggle}>
