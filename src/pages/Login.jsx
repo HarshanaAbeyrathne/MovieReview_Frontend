@@ -16,23 +16,32 @@ function Login() {
     const [error, setError] = useState(null);
     const user  = useSelector((state) => state.auth.user);
     const dispatch = useDispatch();
-    const {loading, hasErrors} = useSelector(state => state.auth);
+    // const {loading, hasErrors} = useSelector(state => state.auth);
     const navigate  = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(login({email, password}));
-        
-        
+        dispatch(login({email, password}))
+            .unwrap()
+            .then((user) => {
+                // console.log(user);
+                if(user){
+                    alert('Login successful!');
+                    navigate('/');
+                }
+            })
+            .catch((err) => {
+                setError(err.message || err);
+            });
     }
 
-    useEffect(() => {
-        if(user){
-            alert('Login successful!');
-            navigate('/');
-        }
-    }, [user]);
+    // useEffect(() => {
+    //     if(user){
+    //         alert('Login successful!');
+    //         navigate('/');
+    //     }
+    // }, [user, navigate]);
 
   return (
     <div>

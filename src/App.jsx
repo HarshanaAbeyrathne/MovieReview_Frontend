@@ -23,8 +23,8 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
       <Navbar />
         <Routes>
-          <Route path="/" element= {
-            <Home/>
+          <Route path="/" element= {<ProtectedRoute>
+            <Home/></ProtectedRoute>
             }/>
           <Route path="/signup" element= {<Signup/>}/>
           <Route path="/login" element= {<Login/>}/>

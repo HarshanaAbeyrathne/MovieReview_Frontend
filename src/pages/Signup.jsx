@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../redux/features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   
@@ -14,36 +15,31 @@ const Signup = () => {
     const [mobile, setMobile] = useState('');
     const [error, setError] = useState('');
 
+    const navigate = useNavigate();
+
     ///
     const dispatch = useDispatch();
     const { loading, satateError } = useSelector((state) => state.auth);
 
     const handleSubmit = (e) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
+      alert('Passwords do not match!');
+      return;
+  }
+    dispatch(signup({ name, email, password, mobile }))
+        .unwrap()
+        .then((user) => {
+            if (user) {
+                alert('Registration successful!');
+                navigate('/');
+            }
+        })
+        .catch((err) => {
+            setError(err.message || err);
+        });
 
-    // const user = { name, email, password, mobile };
-    // console.log(user);
-    
 
-    // axios.post('http://localhost:5000/api/user/signup', user)
-    //     .then(res => {
-    //         console.log(res.data);
-    //         alert('User registered successfully!');
-    //     })
-    //     .catch(err => {
-    //       // console.log(err);
-    //       if (err.response && err.response.data && err.response.data.message) {
-    //           setError(err.response.data.message);
-    //       } else {
-    //           setError('An error occurred!');
-    //       }
-    //   });
-    dispatch(signup({ name, email, password, mobile }));
     }
 
   
