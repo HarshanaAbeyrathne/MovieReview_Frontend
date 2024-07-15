@@ -14,26 +14,34 @@ import Login from "./pages/Login";
 import Another from "./pages/Another";
 import { PersistGate } from "redux-persist/integration/react";
 
+//admin components
+import AdminLogin from "./pages/AdminLogin";
+import AdminHome from "./pages/AdminHome";
 
 
 function App() {
   return (
-    <BrowserRouter>
+  <BrowserRouter>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-      <Navbar />
+        <Navbar />
         <Routes>
           <Route path="/" element= {<ProtectedRoute>
             <Home/></ProtectedRoute>
             }/>
+          
           <Route path="/signup" element= {<Signup/>}/>
           <Route path="/login" element= {<Login/>}/>
           <Route path="/an" element= {<Another/>}/>
+
+          //admin routes
+          <Route path="/adminMain" element= {<ProtectedRoute><AdminHome/></ProtectedRoute>}/>
+          <Route path="/adminLogin" element= {<AdminLogin/>}/>
           {/* <Route path="/login" element= {<ProtectedRoute><Home/></ProtectedRoute>}/> */}
         </Routes>
-        </PersistGate>
+      </PersistGate>
     </Provider>
-    </BrowserRouter>
+  </BrowserRouter>
   );
 }
 

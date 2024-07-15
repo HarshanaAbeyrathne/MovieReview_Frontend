@@ -84,6 +84,7 @@ function Login() {
             </div>
             </form>
             <p className="mt-4 text-center">don't have an account?    <a href="/signup" className="text-blue-500 hover:underline">Register</a></p>
+            <p className="mt-4 text-center">Admin?    <a href="/adminLogin" className="text-blue-500 hover:underline">Admin Login</a></p>
         </div>
     </div>
     </div>
