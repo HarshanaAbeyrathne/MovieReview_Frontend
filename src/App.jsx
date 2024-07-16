@@ -17,6 +17,8 @@ import { PersistGate } from "redux-persist/integration/react";
 //admin components
 import AdminLogin from "./pages/AdminLogin";
 import AdminHome from "./pages/AdminHome";
+import AdminUsers from "./pages/usersDetail";
+import AddMovie from "./pages/AddMovie";
 
 
 function App() {
@@ -37,7 +39,8 @@ function App() {
           //admin routes
           <Route path="/adminMain" element= {<ProtectedRoute><AdminHome/></ProtectedRoute>}/>
           <Route path="/adminLogin" element= {<AdminLogin/>}/>
-          {/* <Route path="/login" element= {<ProtectedRoute><Home/></ProtectedRoute>}/> */}
+          <Route path="/adminUsers" element= {<ProtectedRoute><AdminUsers/></ProtectedRoute>}/>
+          <Route path="/addMovie" element= {<ProtectedRoute><AddMovie/></ProtectedRoute>}/>
         </Routes>
       </PersistGate>
     </Provider>
