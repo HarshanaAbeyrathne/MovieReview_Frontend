@@ -45,12 +45,12 @@ function Login() {
 
   return (
     <div>
-    <div className="bg-gray-100 flex items-center justify-center min-h-screen">
-        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-            <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
+    <div className="bg-[url('/src/assets/images/wallpaper4.jpg')] bg-cover min-h-screen flex items-center justify-center ">
+    <div className="bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-lg shadow-md w-full max-w-md">
+            <h2 className="text-white text-2xl font-semibold mb-6 text-center">Login</h2>
             <form action="#" method="POST" className="space-y-6" onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                <label htmlFor="email" className="text-white block text-sm font-medium text-gray-700">Email</label>
                 <input 
                 type="email" 
                 id="email" 
@@ -62,7 +62,7 @@ function Login() {
                 />
             </div>
             <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+                <label htmlFor="password" className="text-white block text-sm font-medium text-gray-700">Password</label>
                 <input 
                 type="password" 
                 id="password" 
@@ -83,8 +83,8 @@ function Login() {
                 {error && <p style={{ color: 'red' }}>{error}</p>}
             </div>
             </form>
-            <p className="mt-4 text-center">don't have an account?    <a href="/signup" className="text-blue-500 hover:underline">Register</a></p>
-            <p className="mt-4 text-center">Admin?    <a href="/adminLogin" className="text-blue-500 hover:underline">Admin Login</a></p>
+            <p className="mt-4 text-center text-white">don't have an account?    <a href="/signup" className="text-blue-500 hover:underline">Register</a></p>
+            <p className="mt-4 text-center text-white">Admin?    <a href="/adminLogin" className="text-blue-500 hover:underline">Admin Login</a></p>
         </div>
     </div>
     </div>
