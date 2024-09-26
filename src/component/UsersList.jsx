@@ -95,4 +95,5 @@ const UsersDetails = () => {
     );
 };
 
+
 export default UsersDetails;

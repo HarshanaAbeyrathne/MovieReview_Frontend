@@ -8,7 +8,9 @@ export default {
     fontFamily: {
       poppins: ['Poppins', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      
+    },
   },
   plugins: [],
 }
